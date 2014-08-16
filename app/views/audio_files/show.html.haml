@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Title:
+  = @audio_file.title
+%p
+  %b Description:
+  = @audio_file.description
+
+  -if !@audio_file.audio_attachment.nil?
+    = link_to @audio_file.audio_attachment.name, @audio_file.audio_attachment.url
+
+= link_to 'Edit', edit_audio_file_path(@audio_file)
+\|
+= link_to 'Back', audio_files_path

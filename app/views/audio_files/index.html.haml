@@ -1,0 +1,31 @@
+.row
+  %h1 Teachings
+
+  %table.table
+    %tr
+      %th Title
+      %th Description
+      %th
+      / %th
+      / %th
+      %th
+
+    - @audio_files.each do |audio_file|
+      %tr
+        %td= audio_file.title
+        %td= audio_file.description
+        %td
+          %audio{:controls => true}
+            %source{:src => audio_file.audio_attachment.url, :type => "audio/mpeg" }
+        / %td= link_to 'Show', audio_file
+        / %td= link_to 'Edit', edit_audio_file_path(audio_file)
+        %td= link_to 'Destroy', audio_file, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+  %br
+
+  = link_to 'New Audio file', new_audio_file_path
+
+  .row
+    -tag_cloud AudioFile.tag_counts, %w[ s m l] do|tag, css_class|
+      = link_to tag.name, tag_path(tag.name), class: css_class
+
