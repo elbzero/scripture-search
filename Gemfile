@@ -19,6 +19,7 @@ gem "less-rails"
 gem 'jquery-ui-rails'
 gem "paperclip", "~> 4.1"
 gem 'aws-sdk'
+gem "font-awesome-rails"
 gem 'simple_form', :github => 'plataformatec/simple_form', :tag => 'v3.1.0.rc1'
 
 # Use jquery as the JavaScript library

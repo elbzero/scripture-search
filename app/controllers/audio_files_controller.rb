@@ -4,7 +4,9 @@ class AudioFilesController < ApplicationController
   # GET /audio_files
   # GET /audio_files.json
   def index
-    if params[:tag]
+    if params[:search]
+      @audio_files = AudioFile.where( "description like ?","%#{params[:search]}%")
+    elsif params[:tag]
       @audio_files = AudioFile.tagged_with(params[:tag])
     else
       @audio_files = AudioFile.all
