@@ -1,15 +1,21 @@
 %p#notice= notice
 
-%p
-  %b Title:
-  = @audio_file.title
-%p
-  %b Description:
-  = @audio_file.description
+.container
+  .jumbotron
+    %h2 Teaching
+  .row
+    %p
+      %b Title:
+      = @audio_file.title
+  .row
+    %p
+      %b Description:
+      = @audio_file.description
+  .row
+    %p
+      = render partial: "audio_player", locals: { audio_file: @audio_file}
 
-  -if !@audio_file.audio_attachment.nil?
-    = link_to @audio_file.audio_attachment.name, @audio_file.audio_attachment.url
-
-= link_to 'Edit', edit_audio_file_path(@audio_file)
-\|
-= link_to 'Back', audio_files_path
+  .row
+    = link_to 'Edit', edit_audio_file_path(@audio_file)
+    \|
+    = link_to 'Back', audio_files_path

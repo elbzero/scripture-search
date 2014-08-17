@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :audio_files
 
   get 'tags/:tag', to: 'audio_files#index', as: :tag
+  get 'find_tags', to: 'audio_files#find_tags'
   post 'audio_files/:id', to: 'audio_files#index'
 
 

@@ -13,7 +13,7 @@
  *= require_tree .
  *= require_self
  *= require bootstrap_and_overrides
- *= require jquery-ui
+ *= require jquery-ui/autocomplete
  *= require font-awesome
  *= require main
  */

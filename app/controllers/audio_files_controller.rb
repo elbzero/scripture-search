@@ -13,6 +13,18 @@ class AudioFilesController < ApplicationController
     end
   end
 
+  def find_tags
+    @tags = Tag.where( "name like ?","#{params[:term]}%")
+
+    @tag_names = Array.new
+
+    @tags.each do|tag|
+      @tag_names.push(tag.name)
+    end
+
+    render json: @tag_names
+  end
+
   # GET /audio_files/1
   # GET /audio_files/1.json
   def show

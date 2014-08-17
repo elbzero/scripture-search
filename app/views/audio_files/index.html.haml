@@ -23,8 +23,7 @@
         %td= audio_file.title
         %td= audio_file.description
         %td
-          %audio{:controls => true}
-            %source{:src => audio_file.audio_attachment.url, :type => "audio/mpeg" }
+          = render partial: "audio_player", locals: { audio_file: audio_file}
         / %td= link_to 'Show', audio_file
         %td= link_to 'Edit', edit_audio_file_path(audio_file)
         %td= link_to 'Destroy', audio_file, :method => :delete, :data => { :confirm => 'Are you sure?' }
@@ -35,5 +34,8 @@
 
   .row
     -tag_cloud AudioFile.tag_counts, %w[ s m l] do|tag, css_class|
-      = link_to tag.name, tag_path(tag.name), class: css_class
+      = link_to tag_path(tag.name), class: css_class do
+        #{tag.name}
+        %span.badge
+          #{tag.count}
 

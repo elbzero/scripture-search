@@ -14,7 +14,7 @@
     .form-group
       = f.input :audio_attachment
     .form-group
-      = f.input :tag_list
+      = f.input :tag_list, input_html: { class: "tags_field form-control", autocomplete: "off" }
   .row
     .actions
       = f.submit 'Save'

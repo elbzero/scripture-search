@@ -40,6 +40,8 @@ Rails.application.configure do
     :storage => :s3,
     :s3_credentials => {
       :bucket => "elbzero_audio_files",
+      :access_key_id => "AKIAI7VHQQAYL4U4BBOA",
+      :secret_access_key => "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"
     }
   }
 end
