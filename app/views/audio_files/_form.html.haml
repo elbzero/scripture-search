@@ -12,9 +12,14 @@
     .form-group
       = f.input :description, as: :text
     .form-group
-      = f.input :audio_attachment
+      -if @audio_file.audio_attachment.nil?
+        = f.input :audio_attachment
+      -else
+        = link_to "#{@audio_file.title} - File", @audio_file.audio_attachment.url
+        %label Delete Attachment
+        %input{ name: "delete_attachment", type: "checkbox"}
     .form-group
       = f.input :tag_list, input_html: { class: "tags_field form-control", autocomplete: "off" }
   .row
     .actions
-      = f.submit 'Save'
+      = f.submit 'Save', :class => "btn btn-success"
