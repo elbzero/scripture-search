@@ -1,5 +1,8 @@
 .row
-  %h1 Teachings
+  -if @current_tag
+    %h1 Teachings - tagged with #{@current_tag}
+  -else
+    %h1 Teachings
   %form{:action => "audio_files"}
     .row
       .col-md-4.col-md-offset-6
@@ -9,6 +12,7 @@
         %button.btn.btn-primary.btn-block{:type => "Submit"}
           %i.fa.fa-search
           Search
+.row
   %table.table
     %tr
       %th Title
@@ -27,15 +31,22 @@
         / %td= link_to 'Show', audio_file
         %td= link_to 'Edit', edit_audio_file_path(audio_file)
         %td= link_to 'Destroy', audio_file, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-  %br
-
-  = link_to 'New Audio file', new_audio_file_path
-
-  .row
-    -tag_cloud AudioFile.tag_counts, %w[ s m l] do|tag, css_class|
-      = link_to tag_path(tag.name), class: css_class do
-        #{tag.name}
-        %span.badge
-          #{tag.count}
+.row
+  = link_to 'New Audio file', new_audio_file_path, class: "btn btn-success"
+.row.tagging-row
+  .panel.panel-info
+    .panel-heading
+      Tags
+    .panel-body
+      .row
+        .tag_cloud
+          -tag_cloud AudioFile.tag_counts, %w[ btn-xs btn-normal btn-sm btn-lg ] do|tag, css_class|
+            = link_to tag_path(tag.name), class: "btn btn-info #{css_class}" do
+              #{tag.name}
+              %span.badge
+                #{tag.count}
+      .row
+        -if @current_tag
+          %br/
+          = link_to "Reset tags", audio_files_path(@audio_file), class: "btn btn-warning"
 

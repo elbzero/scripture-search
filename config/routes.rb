@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root to: "audio_files#index"
   resources :audio_files
 
   get 'tags/:tag', to: 'audio_files#index', as: :tag

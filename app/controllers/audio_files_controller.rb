@@ -7,6 +7,7 @@ class AudioFilesController < ApplicationController
     if params[:search]
       @audio_files = AudioFile.where( "description like ?","%#{params[:search]}%")
     elsif params[:tag]
+      @current_tag = params[:tag]
       @audio_files = AudioFile.tagged_with(params[:tag])
     else
       @audio_files = AudioFile.all
