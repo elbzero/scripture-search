@@ -13,6 +13,9 @@
           %i.fa.fa-search
           Search
 .row
+  .col-md-12
+    = paginate @audio_files
+.row
   %table.table
     %tr
       %th Title
@@ -32,6 +35,9 @@
         %td= link_to 'Edit', edit_audio_file_path(audio_file)
         %td= link_to 'Destroy', audio_file, :method => :delete, :data => { :confirm => 'Are you sure?' }
 .row
+  .col-md-12
+    = paginate @audio_files
+.row
   = link_to 'New Audio file', new_audio_file_path, class: "btn btn-success"
 .row.tagging-row
   .panel.panel-info
@@ -40,7 +46,7 @@
     .panel-body
       .row
         .tag_cloud
-          -tag_cloud AudioFile.tag_counts, %w[ btn-xs btn-normal btn-sm btn-lg ] do|tag, css_class|
+          -tag_cloud AudioFile.tag_counts, %w[ btn-xs btn-sm btn-normal btn-lg ] do|tag, css_class|
             = link_to tag_path(tag.name), class: "btn btn-info #{css_class}" do
               #{tag.name}
               %span.badge

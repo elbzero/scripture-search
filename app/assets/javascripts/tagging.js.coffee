@@ -9,6 +9,7 @@ $ ->
     event.preventDefault()  if event.keyCode is $.ui.keyCode.TAB and $(this).autocomplete("instance").menu.active
     return
   ).autocomplete
+    minLength: 1,
     source: (request, response) ->
       $.getJSON "/find_tags",
         term: extractLast(request.term)
