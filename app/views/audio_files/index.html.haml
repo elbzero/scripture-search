@@ -13,6 +13,8 @@
           %i.fa.fa-search
           Search
 .row
+  - render_shareable
+.row
   .col-md-12
     = paginate @audio_files
 .row
@@ -31,9 +33,11 @@
         %td= audio_file.description
         %td
           = render partial: "audio_player", locals: { audio_file: audio_file}
+        %td
+          - render_shareable url: audio_file_path(audio_file.id)
         / %td= link_to 'Show', audio_file
         %td= link_to 'Edit', edit_audio_file_path(audio_file)
-        %td= link_to 'Destroy', audio_file, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        / %td= link_to 'Destroy', audio_file, :method => :delete, :data => { :confirm => 'Are you sure?' }
 .row
   .col-md-12
     = paginate @audio_files
