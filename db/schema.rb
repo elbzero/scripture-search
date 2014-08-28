@@ -11,20 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140816151219) do
+ActiveRecord::Schema.define(version: 20140824190151) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "audio_files", force: true do |t|
+  create_table "media_bookmarks", force: true do |t|
+    t.decimal  "startTime"
+    t.integer  "media_file_id"
+    t.string   "note"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "media_files", force: true do |t|
     t.string   "title"
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "audio_attachment_file_name"
-    t.string   "audio_attachment_content_type"
-    t.integer  "audio_attachment_file_size"
-    t.datetime "audio_attachment_updated_at"
+    t.string   "media_attachment_file_name"
+    t.string   "media_attachment_content_type"
+    t.integer  "media_attachment_file_size"
+    t.datetime "media_attachment_updated_at"
   end
 
   create_table "taggings", force: true do |t|

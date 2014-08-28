@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class MediaFileTest < ActiveSupport::TestCase
+class MediaBookmarkTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

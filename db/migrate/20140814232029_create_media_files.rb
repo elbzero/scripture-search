@@ -1,6 +1,6 @@
-class CreateAudioFiles < ActiveRecord::Migration
+class CreateMediaFiles < ActiveRecord::Migration
   def change
-    create_table :audio_files do |t|
+    create_table :media_files do |t|
       t.string :title
       t.string :description
 

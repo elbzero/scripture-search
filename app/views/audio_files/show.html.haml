@@ -1,21 +1,30 @@
 %p#notice= notice
 
 .container
-  .jumbotron
-    %h2 Teaching
   .row
-    %p
-      %b Title:
-      = @audio_file.title
-  .row
-    %p
-      %b Description:
-      = @audio_file.description
-  .row
-    %p
-      = render partial: "audio_player", locals: { audio_file: @audio_file}
+    .col-md-8
+      .row
+        %h3 Title: #{@media_file.title}
+      .row
+        %h3 Title: #{@media_file.description}
+        %br/
+      .row
+        %p
+          = render partial: "audio_player", locals: { media_file: @media_file}
+    .col-md-4
+      %h4 Bookmarks
+      %ol
+        -@media_bookmarks.each do|media_bookmark|
+          %li 
+            %a.audio-bookmark{:"data-start-time" => media_bookmark.startTime }
+              #{media_bookmark.note} - #{media_bookmark.duration}
 
   .row
-    = link_to 'Edit', edit_audio_file_path(@audio_file)
-    \|
-    = link_to 'Back', audio_files_path
+    %button.btn.btn-success.add-bookmark{ :"data-audio-file" => @media_file.id}
+      Add Bookmark
+    = link_to 'Edit', edit_media_file_path(@media_file), class: "btn btn-primary"
+    = link_to 'Back', media_files_path, class: "btn btn-primary"
+-if !@start_at_bookmark.nil?
+  .start_at{ :"data-start-time" => @start_at_bookmark.startTime}
+
+= render partial: "media_bookmark/bookmark_dialog", locals: { media_file: @media_file}

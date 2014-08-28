@@ -34,6 +34,8 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'rails_serve_static_assets', group: [:production]
 gem 'kaminari-bootstrap', '~> 0.1.3'
+gem 'shareable'
+gem 'lodash-rails'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

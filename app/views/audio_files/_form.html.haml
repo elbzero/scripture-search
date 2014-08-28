@@ -1,9 +1,9 @@
-= simple_form_for( @audio_file, :html => { :multipart => true}, :defaults => { :input_html => { :class => "form-control" } }) do |f|
-  - if @audio_file.errors.any?
+= simple_form_for( @media_file, :html => { :multipart => true}, :defaults => { :input_html => { :class => "form-control" } }) do |f|
+  - if @media_file.errors.any?
     #error_explanation
-      %h2= "#{pluralize(@audio_file.errors.count, "error")} prohibited this audio_file from being saved:"
+      %h2= "#{pluralize(@media_file.errors.count, "error")} prohibited this media_file from being saved:"
       %ul
-        - @audio_file.errors.full_messages.each do |msg|
+        - @media_file.errors.full_messages.each do |msg|
           %li= msg
 
   .row
@@ -12,7 +12,7 @@
     .form-group
       = f.input :description, as: :text
     .form-group
-      = f.input :audio_attachment
+      = f.input :media_attachment
     .form-group
       = f.input :tag_list, input_html: { class: "tags_field form-control", autocomplete: "off" }
   .row

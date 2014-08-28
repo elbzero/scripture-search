@@ -39,7 +39,7 @@ Rails.application.configure do
   config.paperclip_defaults = {
     :storage => :s3,
     :s3_credentials => {
-      :bucket => "elbzero_audio_files",
+      :bucket => "elbzero_media_files",
       :access_key_id => "AKIAI7VHQQAYL4U4BBOA",
       :secret_access_key => "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"
     }

@@ -1,0 +1,10 @@
+#dialog-form{:title => "Add bookmark"}
+  %p.validateTips All form fields are required.
+  %form
+    %fieldset
+      %label{:for => "note"} Note
+      %input#name.text.ui-widget-content.ui-corner-all{:name => "note", :type => "text", :value => ""}/
+      %input{:name => "media_file", :type => "hidden", :value => media_file.id }
+      %input{:name => "startTime", :type => "hidden"}
+      / Allow form submission with keyboard without duplicating the dialog button
+      %input{:style => "position:absolute; top:-1000px", :tabindex => "-1", :type => "submit"}/

@@ -1,2 +1,2 @@
-module AudioFilesHelper
+module MediaFilesHelper
 end

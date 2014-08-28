@@ -1,4 +1,4 @@
 require 'test_helper'
 
-class AudioFilesHelperTest < ActionView::TestCase
+class MediaFilesHelperTest < ActionView::TestCase
 end

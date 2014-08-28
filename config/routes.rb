@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
-  root to: "audio_files#index"
-  resources :audio_files
+  root to: "media_files#index"
+  resources :media_files
 
-  get 'tags/:tag', to: 'audio_files#index', as: :tag
-  get 'find_tags', to: 'audio_files#find_tags'
-  post 'audio_files/:id', to: 'audio_files#index'
+  get 'tags/:tag', to: 'media_files#index', as: :tag
+  get 'find_tags', to: 'media_files#find_tags'
+  post 'media_files/:id', to: 'media_files#index'
+  post 'add_bookmark', to: 'media_bookmarks#add_bookmark'
 
 
   # The priority is based upon order of creation: first created -> highest priority.

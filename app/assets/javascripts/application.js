@@ -14,5 +14,8 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require jquery-ui/autocomplete
+//= require jquery-ui/dialog
+//= require lodash
 //= require tagging
+//= require main
 //= require_tree .
