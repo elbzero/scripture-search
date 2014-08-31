@@ -1,8 +1,7 @@
 class CreateMediaFiles < ActiveRecord::Migration
   def change
     create_table :media_files do |t|
-      t.string :title
-      t.string :description
+      t.integer :start_bookmark
 
       t.timestamps
     end

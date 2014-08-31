@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root to: "media_files#index"
   resources :media_files
+  resources :media_bookmarks
 
   get 'tags/:tag', to: 'media_files#index', as: :tag
   get 'find_tags', to: 'media_files#find_tags'

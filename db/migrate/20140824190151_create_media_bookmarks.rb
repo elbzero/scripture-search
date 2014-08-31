@@ -3,8 +3,8 @@ class CreateMediaBookmarks < ActiveRecord::Migration
     create_table :media_bookmarks do |t|
       t.decimal :startTime
       t.integer :media_file_id
-      t.string :note
-      t.boolean :start
+      t.string :title
+      t.text :description
 
       t.timestamps
     end

@@ -5,16 +5,13 @@
       %ul
         - @media_file.errors.full_messages.each do |msg|
           %li= msg
-
+  = render partial: "media_bookmark/bookmark_form", locals: { media_bookmark: @media_file.start_bookmark}
+  -if @media_file.media_attachment.nil?
+    .row
+      .col-md-12
+        .form-group
+          = f.input :media_attachment
   .row
-    .form-group
-      = f.input :title
-    .form-group
-      = f.input :description, as: :text
-    .form-group
-      = f.input :media_attachment
-    .form-group
-      = f.input :tag_list, input_html: { class: "tags_field form-control", autocomplete: "off" }
-  .row
-    .actions
-      = f.submit 'Save', :class => "btn btn-success"
+    = f.submit 'Save', :class => "btn btn-success"
+    = link_to 'Show', @media_file, class: "btn btn-primary"
+    = link_to 'Back', media_files_path, class: "btn btn-primary"

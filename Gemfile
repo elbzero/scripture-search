@@ -36,6 +36,7 @@ gem 'rails_serve_static_assets', group: [:production]
 gem 'kaminari-bootstrap', '~> 0.1.3'
 gem 'shareable'
 gem 'lodash-rails'
+gem 'jquery-turbolinks'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

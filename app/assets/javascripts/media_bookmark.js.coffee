@@ -42,12 +42,12 @@ $(document).ready ->
 
   dialog = $("#dialog-form").dialog(
     autoOpen: false
-    height: 300
-    width: 350
+    height: 400
+    width: 500
     modal: true
     position: 
       my: "center"
-      at: "top"
+      at: "center"
       of: window
     buttons: [
       text: "Add Bookmark"
