@@ -32,7 +32,7 @@
     - @media_bookmarks.each do |media_bookmark|
       %tr
         %td
-          = link_to media_file_path(media_bookmark.media_file) do
+          = link_to bookmark_path(media_bookmark.media_file.id, media_bookmark.id) do
             %i.fa.fa-play
         %td= media_bookmark.media_file.start_bookmark.title
         %td= media_bookmark.media_file.start_bookmark.description

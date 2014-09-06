@@ -12,6 +12,10 @@ startBookmarkAt = (start_at) ->
 window.queuedEvents = []
 
 $(document).ready ->
+
+  if $("#bookmark").length > 0
+    startBookmarkAt $("#bookmark")
+
   $(".add-bookmark").click ->
     dialog.dialog "open"
     media_file = $(".add-bookmark").data("audio-file")

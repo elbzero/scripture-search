@@ -6,7 +6,7 @@
         - @media_file.errors.full_messages.each do |msg|
           %li= msg
   = render partial: "media_bookmark/bookmark_form", locals: { media_bookmark: @media_file.start_bookmark}
-  -if @media_file.media_attachment.nil?
+  -if !@media_file.media_attachment.exists?
     .row
       .col-md-12
         .form-group

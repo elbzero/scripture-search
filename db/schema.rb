@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140828225521) do
+ActiveRecord::Schema.define(version: 20140824190151) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,13 +19,6 @@ ActiveRecord::Schema.define(version: 20140828225521) do
   create_table "media_bookmarks", force: true do |t|
     t.decimal  "startTime"
     t.integer  "media_file_id"
-    t.string   "title"
-    t.text     "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "media_file_descriptions", force: true do |t|
     t.string   "title"
     t.text     "description"
     t.datetime "created_at"

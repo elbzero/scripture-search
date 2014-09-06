@@ -1,5 +1,5 @@
 class MediaFilesController < ApplicationController
-  before_action :set_media_file, only: [:show, :edit, :update, :destroy]
+  before_action :set_media_file, only: [:show, :edit, :update, :destroy, :bookmark]
 
   # GET /media_files
   # GET /media_files.json
@@ -31,12 +31,28 @@ class MediaFilesController < ApplicationController
     render json: @tag_names
   end
 
+  def bookmark
+    @bookmark = MediaBookmark.find(params[:bookmark])
+    if params[:start_at_bookmark]
+      @start_at_bookmark = MediaBookmark.find(params[:start_at_bookmark])
+    end
+    @media_bookmarks = MediaBookmark.where( "media_file_id = ?", @media_file.id )
+
+    render :show
+  end
+
   # GET /media_files/1
   # GET /media_files/1.json
   def show
     if params[:start_at_bookmark]
-      @start_at_bookmark = MediaBookmark.find(params[:start_at_bookmark])
+      @bookmark = MediaBookmark.find(params[:start_at_bookmark])
+    else
+      @bookmark = @media_file.start_bookmark
     end
+    @media_bookmarks = media_bookmarks
+  end
+
+  def media_bookmarks
     @media_bookmarks = MediaBookmark.where( "media_file_id = ?", @media_file.id )
   end
 
@@ -92,6 +108,11 @@ class MediaFilesController < ApplicationController
   # DELETE /media_files/1
   # DELETE /media_files/1.json
   def destroy
+
+    media_bookmarks.each do |bookmark|
+      bookmark.destroy
+    end
+
     @media_file.destroy
     respond_to do |format|
       format.html { redirect_to media_files_url, notice: 'Audio file was successfully destroyed.' }

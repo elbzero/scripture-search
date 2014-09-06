@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'tags/:tag', to: 'media_files#index', as: :tag
   get 'find_tags', to: 'media_files#find_tags'
   post 'media_files/:id', to: 'media_files#index'
+  get 'bookmark/:id/:bookmark', to: 'media_files#bookmark', as: :bookmark
   post 'add_bookmark', to: 'media_bookmarks#add_bookmark'
 
 

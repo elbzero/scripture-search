@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: media_files
+#
+#  id                            :integer          not null, primary key
+#  start_bookmark                :integer
+#  created_at                    :datetime
+#  updated_at                    :datetime
+#  media_attachment_file_name    :string(255)
+#  media_attachment_content_type :string(255)
+#  media_attachment_file_size    :integer
+#  media_attachment_updated_at   :datetime
+#
+
 class MediaFile < ActiveRecord::Base
   has_many :media_bookmarks
   belongs_to :start_bookmark, :class_name => "MediaBookmark", :foreign_key => "start_bookmark"
