@@ -3,7 +3,7 @@
     %h1 Teachings - tagged with #{@current_tag}
   -else
     %h1 Teachings
-  %form{:action => "media_bookmarks"}
+  %form{:action => "media_files"}
     .row
       .col-md-4.col-md-offset-6
         .form-group
@@ -13,36 +13,40 @@
           %i.fa.fa-search
           Search
 .row
-  - render_shareable
-.row
   .col-md-12
     = paginate @media_bookmarks
 .row
+  .col-md-12
+    Search results for 
+    %div{style: "background-color : black; color : red; display : inline-block"}
+      Marriage, 
+.row
   %table.table
+    %tr
+      %th{colspan: 7}
+        %h3
+          Salvation
     %tr
       %th
       %th Title
       %th Description
-      %th Bookmark
-      %th Topics
+      %th File name
+      %th Sub topics
       %th
       %th
-      %th
-
     - @media_bookmarks.each do |media_bookmark|
       %tr
         %td
           = link_to bookmark_path(media_bookmark.media_file.id, media_bookmark.id) do
             %i.fa.fa-play
-        %td= media_bookmark.media_file.start_bookmark.title
-        %td= media_bookmark.media_file.start_bookmark.description
         %td
           #{media_bookmark.title}
+        %td= media_bookmark.description 
+        %td= media_bookmark.media_file.start_bookmark.title
         %td= media_bookmark.topic_list
-        %td
-          - render_shareable url: media_bookmark_path(media_bookmark.id)
-        %td= link_to 'Edit', edit_media_file_path(media_bookmark.media_file)
+        %td= link_to 'Edit', edit_media_bookmark_path(media_bookmark)
         %td= link_to 'Destroy', media_bookmark.media_file, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
 .row
   .col-md-12
     = paginate @media_bookmarks

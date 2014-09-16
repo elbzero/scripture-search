@@ -2,12 +2,13 @@
 - description = media_bookmark.nil? ? "" : media_bookmark.description
 - topics = media_bookmark.nil? ? "" : media_bookmark.topic_list
 .row
-  .col-md-4
+  .col-md-12
     .form-group
       %label Title
       %br/
       %input.form-control{:name => "title", :value => title}
-  .col-md-8
+.row
+  .col-md-12
     .form-group
       %label Description
       %br/

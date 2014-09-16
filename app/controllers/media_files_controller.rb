@@ -128,7 +128,7 @@ class MediaFilesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def media_file_params
-      params.permit(:media_attachment)
+      params[:media_file].permit(:media_attachment)
     end
 
     def media_bookmark_params
