@@ -2,9 +2,7 @@
   %p.validateTips All form fields are required.
   %form
     %fieldset
-      = render partial: "media_bookmark/bookmark_form", locals: { media_bookmark: nil}
+      = render partial: "media_bookmarks/form", locals: { media_bookmark: nil, type: nil, media_file: @media_file }
       %input{:name => "media_file_id", :type => "hidden", :value => media_file.id }
-      %label Start time
-      %input{:name => "startTime", :type => "text"}
       / Allow form submission with keyboard without duplicating the dialog button
       %input{:style => "position:absolute; top:-1000px", :tabindex => "-1", :type => "submit"}/

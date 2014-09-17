@@ -5,19 +5,21 @@ class MediaFilesController < ApplicationController
   # GET /media_files.json
   def index
     if params[:search] and params[:tag]
-      @media_bookmarks = MediaBookmark.where( "description like ? or title like ?", 
-                                      "%#{params[:search]}%", "%#{params[:search]}%").page(params[:page])
+      @media_bookmarks = MediaBookmark.where( "lower(description) like ? or lower(title) like ?", 
+                                      "%#{params[:search].downcase}%", "%#{params[:search].downcase}%").page(params[:page])
     
     elsif params[:search]
-      @media_bookmarks = MediaBookmark.where( "description like ? or title like ?", 
-                                      "%#{params[:search]}%", "%#{params[:search]}%").page(params[:page])
+      @media_bookmarks = MediaBookmark.where( "lower(description) like ? or lower(title) like ?", 
+                                      "%#{params[:search].downcase}%", "%#{params[:search].downcase}%").page(params[:page])
     elsif params[:tag]
       @current_tag = params[:tag]
       @media_bookmarks = MediaBookmark.tagged_with(params[:tag]).page(params[:page])
     else
       @media_bookmarks = MediaBookmark.all.page(params[:page])
     end
+      @media_bookmarks_topic = @media_bookmarks.group_by { |t| t.topic }
   end
+
 
   def find_tags
     @tags = Tag.where( "name like ?","#{params[:term]}%")
@@ -132,6 +134,6 @@ class MediaFilesController < ApplicationController
     end
 
     def media_bookmark_params
-      params.permit(:title, :description, :tag_list, :topic_list)
+      params[:media_bookmark].permit(:title, :description, :tag_list, :topic_list)
     end
 end

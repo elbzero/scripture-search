@@ -1,3 +1,5 @@
+- start_bookmark = @media_file.start_bookmark
+- has_start_bookmark = !start_bookmark.nil?
 = simple_form_for( @media_file, :html => { :multipart => true}, :defaults => { :input_html => { :class => "form-control" } }) do |f|
   - if @media_file.errors.any?
     #error_explanation
@@ -5,7 +7,22 @@
       %ul
         - @media_file.errors.full_messages.each do |msg|
           %li= msg
-  = render partial: "media_bookmarks/bookmark_form", locals: { media_bookmark: @media_file.start_bookmark}
+  .row
+    .col-md-12
+      .form-group
+        %label Title
+        %input.form-control{type: "text", name: "media_bookmark[title]", value: has_start_bookmark ? start_bookmark.title : "" }
+  .row
+    .col-md-12
+      .form-group
+        %label Topic
+        %input.form-control{type: "text", name: "media_bookmark[topic]", value: has_start_bookmark ? start_bookmark.topic : "" }
+  .row
+    .col-md-12
+      .form-group
+        %label Description
+        %textarea.form-control{type: "text", name: "media_bookmark[description]" }
+          #{has_start_bookmark ? start_bookmark.description: ""}
   -if !@media_file.media_attachment.exists?
     .row
       .col-md-12

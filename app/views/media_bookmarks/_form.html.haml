@@ -1,0 +1,32 @@
+- title = media_bookmark.nil? ? "" : media_bookmark.title
+- description = media_bookmark.nil? ? "" : media_bookmark.description
+- topic = media_bookmark.nil? ? "" : media_bookmark.topic
+- action = type.nil? ? "" : media_bookmark_path(media_bookmark)
+- media_bookmark = media_bookmark.nil? ? MediaBookmark.new : media_bookmark
+= simple_form_for( media_bookmark, :html => { :multipart => true}, :defaults => { :input_html => { :class => "form-control" } }) do |f|
+  - if media_bookmark.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@media_file.errors.count, "error")} prohibited this media_file from being saved:"
+      %ul
+        - media_bookmark.errors.full_messages.each do |msg|
+          %li= msg
+  .row
+    .col-md-12
+      = f.input :title
+      %input{type: "hidden", name: "media_bookmark[media_file_id]", value: media_file.id}
+  .row
+    .col-md-12
+      = f.input :topic
+  .row
+    .col-md-12
+      = f.input :description
+  .row
+    .col-md-12
+      = f.input :startTime, required: true
+  -if !type.nil? and type == "submit"  
+    .row
+      .col-md-12
+        %br/
+        = f.submit 'Save', :class => "btn btn-success"
+        = link_to 'Show', media_bookmark, class: "btn btn-primary"
+        = link_to 'Back', media_bookmarks_path, class: "btn btn-primary"

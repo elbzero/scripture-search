@@ -26,6 +26,6 @@
     = link_to 'Edit', edit_media_file_path(@media_file), class: "btn btn-primary"
     = link_to 'Back', media_files_path, class: "btn btn-primary"
 
-= render partial: "media_bookmark/bookmark_dialog", locals: { media_file: @media_file}
+= render partial: "media_bookmarks/bookmark_dialog", locals: { media_file: @media_file}
 
 #bookmark{ :"data-start-time" => @bookmark.startTime }
