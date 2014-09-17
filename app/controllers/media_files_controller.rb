@@ -78,7 +78,11 @@ class MediaFilesController < ApplicationController
   # POST /media_files
   # POST /media_files.json
   def create
-    @media_file = MediaFile.new(media_file_params)
+    if !params[:media_file].nil?
+      @media_file = MediaFile.new(media_file_params)
+    else
+      @media_file = MediaFile.new
+    end
     @media_file.save
     @media_file.start_bookmark = create_start_bookmark
 
@@ -134,6 +138,6 @@ class MediaFilesController < ApplicationController
     end
 
     def media_bookmark_params
-      params[:media_bookmark].permit(:title, :description, :tag_list, :topic_list)
+      params[:media_bookmark].permit(:title, :description, :tag_list, :topic_list, :topic)
     end
 end

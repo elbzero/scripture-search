@@ -15,14 +15,20 @@ class MediaBookmarksController < ApplicationController
 
   end
 
+  def destroy
+    @media_bookmark.destroy
+    respond_to do |format|
+      format.html { redirect_to media_files_url, notice: 'Audio file was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
+
   def update
     respond_to do |format|
       if @media_bookmark.update(media_bookmark_params)
-        puts "Here!!!!!!!!1"
         format.html { redirect_to media_files_path, notice: 'Bookmark was successfully updated.' }
         format.json { render :show, status: :ok, location: @media_bookmark }
       else
-        puts "Here!!!!!!!!2"
         format.html { redirect_to media_files_path }
         format.json { render json: @media_bookmark.errors, status: :unprocessable_entity }
       end

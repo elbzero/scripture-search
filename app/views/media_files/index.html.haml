@@ -38,16 +38,16 @@
         %th
       - bookmarks.each do |media_bookmark|
         %tr
-          %td
+          %td{ style: "width:5%"}
             = link_to bookmark_path(media_bookmark.media_file.id, media_bookmark.id) do
               %i.fa.fa-play
-          %td
+          %td{ style: "width: 25%"}
             #{media_bookmark.title}
-          %td= media_bookmark.description 
-          %td= media_bookmark.media_file.start_bookmark.title
-          %td= media_bookmark.topic_list
-          %td= link_to 'Edit', edit_media_bookmark_path(media_bookmark)
-          %td= link_to 'Destroy', media_bookmark, :method => :delete, :data => { :confirm => 'Are you sure?' }
+          %td{ style: "width: 20%"}= media_bookmark.description 
+          %td{ style: "width: 20%"}= media_bookmark.media_file.start_bookmark.title
+          %td{ style: "width: 20%"}= media_bookmark.topic_list
+          %td{ style: "width: 5%"}= link_to 'Edit', edit_media_bookmark_path(media_bookmark)
+          %td{ style: "width: 5%"}= link_to 'Destroy', media_bookmark, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 .row
   .col-md-12
