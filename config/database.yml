@@ -16,5 +16,3 @@ production:
   adapter: postgresql
   encoding: unicode
   database: scripture_search_production
-  username: postgres
-  password: postgres
