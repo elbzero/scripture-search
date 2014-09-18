@@ -4,22 +4,23 @@ class MediaFilesController < ApplicationController
   # GET /media_files
   # GET /media_files.json
   def index
-    if params[:search] and params[:tag]
-      @media_bookmarks = MediaBookmark.where( "lower(description) like ? or lower(title) like ?", 
-                                      "%#{params[:search].downcase}%", "%#{params[:search].downcase}%").page(params[:page])
+    # if params[:search] and params[:tag]
+    #   @media_files = MediaBookmark.where( "lower(topic) like ? or lower(description) like ? or lower(title) like ?", 
+    #                                   "%#{params[:search].downcase}%", "%#{params[:search].downcase}%", "%#{params[:search].downcase}%").page(params[:page])
     
-    elsif params[:search]
-      @media_bookmarks = MediaBookmark.where( "lower(description) like ? or lower(title) like ?", 
-                                      "%#{params[:search].downcase}%", "%#{params[:search].downcase}%").page(params[:page])
-    elsif params[:tag]
-      @current_tag = params[:tag]
-      @media_bookmarks = MediaBookmark.tagged_with(params[:tag]).page(params[:page])
-    else
-      @media_bookmarks = MediaBookmark.all.page(params[:page])
-    end
-      @media_bookmarks_topic = @media_bookmarks.group_by { |t| t.topic }
-  end
+    # elsif params[:search]
+    #   @media_bookmarks = MediaBookmark.where( "lower(topic) like ? or lower(description) like ? or lower(title) like ?", 
+    #                                   "%#{params[:search].downcase}%", "%#{params[:search].downcase}%", "%#{params[:search].downcase}%").page(params[:page])
+    # elsif params[:tag]
+    #   @current_tag = params[:tag]
+    #   @media_bookmarks = MediaBookmark.tagged_with(params[:tag]).page(params[:page])
+    # else
+    #   @media_bookmarks = MediaBookmark.all.page(params[:page])
+    # end
+    #   @media_bookmarks_topic = @media_bookmarks.group_by { |t| t.topic }
 
+    @media_files = MediaFile.all.page(params[:page])
+  end
 
   def find_tags
     @tags = Tag.where( "name like ?","#{params[:term]}%")

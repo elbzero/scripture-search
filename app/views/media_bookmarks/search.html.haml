@@ -1,0 +1,58 @@
+- search = params[:search].nil? ? "" : nil
+.row
+  -if @current_tag
+    %h1 Teachings - tagged with #{@current_tag}
+  -else
+    %h1 Teachings
+  %form{:action => "media_files"}
+    .row
+      .col-md-4.col-md-offset-6
+        .form-group
+          %input.form-control{:name => "search", value: params[:search]}
+      .col-md-2
+        %button.btn.btn-primary.btn-block{:type => "Submit"}
+          %i.fa.fa-search
+          Search
+.row
+  .col-md-12
+    = paginate @media_bookmarks
+-if params[:search]
+  .row
+    .col-md-12
+      Search results for 
+      .search-results.highlight 
+        #{params[:search]}
+-@media_bookmarks_topic.each do |topic, bookmarks|
+  .row
+    %table.table
+      %tr
+        %th{colspan: 7}
+          %h3
+            #{highlight_search(topic)}
+      %tr
+        %th
+        %th Title
+        %th Description
+        %th File name
+        %th Sub topics
+        %th
+        %th
+      - bookmarks.each do |media_bookmark|
+        %tr
+          %td{ style: "width:5%"}
+            = link_to bookmark_path(media_bookmark.media_file.id, media_bookmark.id) do
+              %i.fa.fa-play
+          %td{ style: "width: 25%"}
+            #{highlight_search( media_bookmark.title )} 
+          %td{ style: "width: 20%"} 
+            #{highlight_search(media_bookmark.description)} 
+          %td{ style: "width: 20%"}
+            #{highlight_search(media_bookmark.media_file.start_bookmark.title)}
+          %td{ style: "width: 20%"}= media_bookmark.topic_list
+          %td{ style: "width: 5%"}= link_to 'Edit', edit_media_bookmark_path(media_bookmark)
+          %td{ style: "width: 5%"}= link_to 'Destroy', media_bookmark, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+.row
+  .col-md-12
+    = paginate @media_bookmarks
+

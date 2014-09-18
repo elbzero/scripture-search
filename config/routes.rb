@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   post 'media_files/:id', to: 'media_files#index'
   get 'bookmark/:id/:bookmark', to: 'media_files#bookmark', as: :bookmark
   post 'add_bookmark', to: 'media_bookmarks#add_bookmark'
+  get 'media_search', to: 'media_bookmarks#search', as: :media_search
 
 
   # The priority is based upon order of creation: first created -> highest priority.
